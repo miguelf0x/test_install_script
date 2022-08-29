@@ -1,6 +1,4 @@
-﻿#!/bin/bash
-
-
+﻿#!/usr/bin/env bash
 
 ###############################################################################
 # Variables                                                                   #
@@ -26,16 +24,21 @@ url_instant_client='http://klokan.spb.ru/PUB/oraarch/ORACLE%20CLIENT/instant_cli
 #Ссылка на PosgreSQLODBC, можно указать на локальный каталог(Опционально) 
 url_postgre_sql='https://ftp.postgresql.org/pub/odbc/versions/msi/psqlodbc_13_01_0000-x86.zip'
 
-source ./config.source
+
+###############################################################################
+# Functions                                                                   #
+###############################################################################
 
 function Get_Info(){
+	
+	source ./config.source
 	
 	echo "Допустимые версии Oracle Client:"
 	echo "1. Oracle Client 12"
 	echo "2. Oracle InstantClient"
 	echo "3. Oracle Client 11"
 
-	while [[ $distr = "" ]]
+	while [[ $oracle_version = "" ]]
     do
         read -r -p "Введите порядковый номер необходимой версии: " response
         if [[ $response -eq 1 ]];

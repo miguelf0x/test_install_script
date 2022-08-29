@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 
 ###############################################################################
@@ -137,13 +137,13 @@ function Mount_ARM(){
 
 cd /home/$username/linux_installer
 
-if [ -d /mnt/ARM ];
+if [[ -d /mnt/ARM ]];
 then
     echo 'Каталог /mnt/ARM уже существует' >> /home/$username/linux_installer/install_log.log
 else
 		echo 'Создание каталога /mnt/ARM' >> /home/$username/linux_installer/install_log.log
 		mkdir /mnt/ARM
-		if [$? -eq 0];
+		if [[ $? -eq 0 ]];
     then
         echo 'Каталог /mnt/ARM создан' >> /home/$username/linux_installer/install_log.log
     else
@@ -151,14 +151,14 @@ else
     fi
 fi
 
-if [ -d /mnt/ARM/APP ];
+if [[ -d /mnt/ARM/APP ]];
 then
     echo 'Каталог /mnt/ARM/APP уже монтирован' >> /home/$username/linux_installer/install_log.log
 else
-    if [ $distr = 'AstraLinux' ];
+    if [[ $distr = 'AstraLinux' ]];
     then
         echo 'Монтирование каталога' >> /home/$username/linux_installer/install_log.log
-				if [ $domain = '' ];
+				if [[ $domain = '' ]];
         then
             sudo mount -t cifs //$ip_mount/ARIADNA/ /mnt/ARM -o username=$username_share,rw,password=$password_share
 				else
@@ -166,7 +166,7 @@ else
 				fi
     else
         echo 'Монтирование каталога' >> /home/$username/linux_installer/install_log.log
-				if [ $domain = '' ];
+				if [[ $domain = '' ]];
         then
             mount -t cifs //$ip_mount/ARIADNA/ /mnt/ARM -o username=$username_share,rw,password=$password_share
 				else
@@ -176,7 +176,7 @@ else
     fi
 fi
 
-if [ -f updater.sh ];
+if [[ -f updater.sh ]];
 then
     echo 'updater.sh уже существует' >> /home/$username/linux_installer/install_log.log
 else
