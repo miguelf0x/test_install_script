@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 ###############################################################################
 #                             install_root script                             #
 #  This script is designed for faster installation of ARIADNA MIS on Linux    #
