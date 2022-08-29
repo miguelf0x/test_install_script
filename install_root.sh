@@ -54,7 +54,7 @@ function Select_Distro(){
     echo "6. Ubuntu"
     echo "7. CentOS 8"
 
-    while [$distr = ""]
+    while [ $distr = "" ]
     do
         read -r -p "Введите порядковый номер используемого дистрибутива: " response
         if [[ $response -eq 1 ]];
@@ -87,7 +87,7 @@ function Select_Distro(){
 
 function Select_Java_Version(){
 
-    if $(getconf LONG_BIT)==64
+    if [[$(getconf LONG_BIT) -eq 64]];
     then
 
         echo "Доступны следующие дистрибутивы Java:"
