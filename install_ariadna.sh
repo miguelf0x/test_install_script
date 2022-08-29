@@ -283,7 +283,7 @@ then
 	else 
 		echo 'Дистрибутива PostgreSQL Client нет' >> /home/$username/linux_installer/install_log.log
 		echo 'Скачивание дистрибутива PostgreSQL Client' >> /home/$username/linux_installer/install_log.log
-		wget $url_postgre_sql
+		wget $url_postgre_sql --no-check-certificate
 		mkdir /home/$username/.wine/drive_c/distrib
 		cp /home/$username/linux_installer/psqlodbc_13_01_0000-x86.zip /home/$username/.wine/drive_c/distrib/psqlodbc_13_01_0000-x86.zip
 	fi
@@ -293,7 +293,7 @@ then
 		cd /home/$username/.wine/drive_c/distrib
 	else
 		cd /home/$username/.wine/drive_c/distrib
-		echo'Распаковка psqlodbc_13_01_0000-x86.zip' >> /home/$username/linux_installer/install_log.log
+		echo 'Распаковка psqlodbc_13_01_0000-x86.zip' >> /home/$username/linux_installer/install_log.log
 		unzip psqlodbc_13_01_0000-x86.zip
 	fi
 
