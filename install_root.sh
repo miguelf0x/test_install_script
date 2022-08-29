@@ -94,7 +94,7 @@ function Select_Java_Version(){
         echo "1. Java Runtime Environment 8 x64"
         echo "2. Java Runtime Environment 6 x64"
 
-        while [$url_java = ""]
+        while [[ $url_java = "" ]]
         do
             read -r -p "Выберите версию дистрибутива Java: " response
             if [[ $response -eq 1 ]];
@@ -114,7 +114,7 @@ function Select_Java_Version(){
         echo "1. Java Runtime Environment 8 i586"
         echo "2. Java Runtime Environment 6 i586"
 
-        while [$url_java = ""]
+        while [[ $url_java = "" ]]
         do
             read -r -p "Выберите версию дистрибутива Java: " response
             if [[ $response -eq 1 ]];
@@ -186,7 +186,7 @@ else
 		echo 'Sh скрипт updater.sh создан' >> /home/$username/linux_installer/install_log.log
 fi
 
-if [ $distr = 'AltLinux8' || $distr = 'AltLinux9' || $distr = 'Centos8' ];
+if [[ $distr = 'AltLinux8' || $distr = 'AltLinux9' || $distr = 'Centos8' ]];
 then
     {
       echo 'sleep 30'
@@ -200,7 +200,7 @@ then
 fi
 
 
-if [ $distr = 'RedOS' || $distr = 'AstraLinux' || $distr = 'RosaLinux' || $distr = 'Ubuntu' ];
+if [[ $distr = 'RedOS' || $distr = 'AstraLinux' || $distr = 'RosaLinux' || $distr = 'Ubuntu' ]];
 then
     {
       echo 'sleep 30'
@@ -230,7 +230,7 @@ cd /home/$username/linux_installer
 
 
 #Java 6 Version x32
-if [ $url_java = 'http://klokan.spb.ru/PUB/jre-6u45-linux-i586.bin' ];
+if [[ $url_java = 'http://klokan.spb.ru/PUB/jre-6u45-linux-i586.bin' ]];
 then
 
     if [ -d /opt/java/jre1.6.0_45 ];
@@ -275,7 +275,7 @@ then
 fi
 
 #Java 6 Version x64
-if [ $url_java = 'http://klokan.spb.ru/PUB/jre-6u45-linux-x64.bin' ];
+if [[ $url_java = 'http://klokan.spb.ru/PUB/jre-6u45-linux-x64.bin' ]];
 then
 
     if [ -d /opt/java/jre1.6.0_45 ];
@@ -320,7 +320,7 @@ then
 fi
 
 #Java 8 Version x32
-if [ $url_java = 'http://klokan.spb.ru/PUB/jre-8u301-linux-i586.tar' ];
+if [[ $url_java = 'http://klokan.spb.ru/PUB/jre-8u301-linux-i586.tar' ]];
 then
     if [ -d /opt/java/jre1.8.0_301 ];
     then
@@ -363,7 +363,7 @@ then
 fi
 
 #Java 8 Version x64
-if [ $url_java = 'http://klokan.spb.ru/PUB/jre-8u301-linux-x64.tar' ];
+if [[ $url_java = 'http://klokan.spb.ru/PUB/jre-8u301-linux-x64.tar' ]];
 then
     if [ -d /opt/java/jre1.8.0_301 ];
     then
@@ -405,19 +405,19 @@ then
     fi
 fi
 
-if [ $distr = 'AltLinux8' ]; then
+if [[ $distr = 'AltLinux8' ]]; then
     apt-get install i586-libXtst.32bit -y
 fi
 
-if [ $distr = 'AltLinux9' ]; then
+if [[ $distr = 'AltLinux9' ]]; then
     apt-get install i586-libXtst.32bit i586-libnsl1.32bit libnsl1 -y
 fi
 
-if [ $distr = 'Ubuntu' ]; then
+if [[ $distr = 'Ubuntu' ]]; then
     apt-get apt-get install libxtst6:i386 -y
 fi
 
-if [ $distr = 'Centos8' ]; then
+if [[ $distr = 'Centos8' ]]; then
     wget http://repo.okay.com.mx/centos/8/x86_64/release/libXtst-1.2.3-7.el8.x86_64.rpm
     rpm -ivh libXtst-1.2.3-7.el8.x86_64.rpm
     rm libXtst-1.2.3-7.el8.x86_64.rpm
@@ -431,42 +431,42 @@ function Install_Wine() {
 
 cd /home/$username/linux_installer
 
-if [ $distr = 'AstraLinux' ];
+if [[ $distr = 'AstraLinux' ]];
 then
   	echo 'Установка wine, конфигурация AstraLinux' >> /home/$username/linux_installer/install_log.log
   	apt-get update && apt-get upgrade -y
   	apt-get install wine winetricks zenity -y
 fi
 
-if [ $distr = 'Ubuntu' ];
+if [[ $distr = 'Ubuntu' ]];
 then
   	echo 'Установка wine, конфигурация Ubuntu' >> /home/$username/linux_installer/install_log.log
   	apt-get update && apt-get upgrade -y
   	apt-get install wine winetricks zenity -y
 fi
 
-if [ $distr = 'AltLinux8' ];
+if [[ $distr = 'AltLinux8' ]];
 then
   	echo 'Установка wine, конфигурация AltLinux8' >> /home/$username/linux_installer/install_log.log
   	apt-get update && apt-get dist-upgrade -y
   	apt-get install i586-wine.32bit wine wine-gecko wine-mono winetricks -y
 fi
 
-if [ $distr = 'AltLinux9' ];
+if [[ $distr = 'AltLinux9' ]];
 then
   	echo 'Установка wine, конфигурация AltLinux9' >> /home/$username/linux_installer/install_log.log
   	apt-get update && apt-get dist-upgrade -y
   	apt-get install i586-wine.32bit wine-mono winetricks -y
 fi
 
-if [ $distr = 'RedOS' ];
+if [[ $distr = 'RedOS' ]];
 then
   	echo 'Установка wine, конфигурация RedOS' >> /home/$username/linux_installer/install_log.log
   	yum update && yum upgrade -y
   	yum install wine winetricks -y
 fi
 
-if [ $distr = 'RosaLinux' ];
+if [[ $distr = 'RosaLinux' ]];
 then
   	echo 'Установка wine, конфигурация RosaLinux' >> /home/$username/linux_installer/install_log.log
   	yum update && yum upgrade -y
@@ -489,7 +489,7 @@ then
   	rm -rf *.rpm
 fi
 
-if [ $distr = 'Centos8' ];
+if [[ $distr = 'Centos8' ]];
 then
   	echo 'Установка wine, конфигурация Centos8' >> /home/$username/linux_installer/install_log.log
   	yum update && yum upgrade -y
@@ -517,7 +517,7 @@ fi
 }
 
 function Run_Crontab() {
-    if [ $distr = 'AstraLinux' ];
+    if [[ $distr = 'AstraLinux' ]];
     then
         sudo systemctl enable cron
         sudo systemctl start cron
