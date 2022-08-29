@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 ###############################################################################
 #                             install_root script                             #
@@ -23,6 +23,25 @@ url_java=""
 ###############################################################################
 # Functions                                                                   #
 ###############################################################################
+
+function Get_Base_Info(){
+
+    read -r -p "Введите имя пользователя: " response
+    username=$response
+
+    read -r -p "Введите IP-адрес сервера данных: " response
+    ip_mount=$response
+
+    read -r -p "Введите имя пользователя БД: " response
+    username_share=$response
+
+    read -r -p "Введите пароль БД: " response
+    password_share=$response
+
+    read -r -p "Введите доменное имя [при наличии]: " response
+    domain=$response
+
+}
 
 function Select_Distro(){
     echo "Полуавтоматическая установка доступна для дистрибутивов:"
@@ -519,6 +538,7 @@ function Finalize(){
 }
 
 #Запуск функций
+Get_Base_Info
 Select_Distro
 Select_Java_Version
 Mount_ARM
