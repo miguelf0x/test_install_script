@@ -99,7 +99,7 @@ function Select_Java_Version(){
             read -r -p "Выберите версию дистрибутива Java: " response
             if [[ $response -eq 1 ]];
             then
-                url_java="http://klokan.spb.ru/PUB/jre-8u301-linux-x64.tar"
+                url_java="http://klokan.spb.ru/PUB/jre-8u301-linux-x64.tar.gz"
             elif [[ $response -eq 2 ]];
             then
                 url_java="http://klokan.spb.ru/PUB/jre-6u45-linux-x64.bin"
@@ -119,7 +119,7 @@ function Select_Java_Version(){
             read -r -p "Выберите версию дистрибутива Java: " response
             if [[ $response -eq 1 ]];
             then
-                url_java="http://klokan.spb.ru/PUB/jre-8u301-linux-i586.tar"
+                url_java="http://klokan.spb.ru/PUB/jre-8u301-linux-i586.tar.gz"
             elif [[ $response -eq 2 ]];
             then
                 url_java="http://klokan.spb.ru/PUB/jre-6u45-linux-i586.bin"
